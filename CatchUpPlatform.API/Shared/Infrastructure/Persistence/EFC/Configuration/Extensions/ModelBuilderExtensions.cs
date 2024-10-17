@@ -9,7 +9,7 @@ public static class ModelBuilderExtensions
         foreach (var entity in builder.Model.GetEntityTypes())
         {
             var tableName = entity.GetTableName();
-            if (!string.IsNullOrEmpty(tableName)) entity.SetTableName(tableName.ToSnakeCase());
+            if (!string.IsNullOrEmpty(tableName)) entity.SetTableName(tableName.ToPlural().ToSnakeCase());
 
             foreach (var property in entity.GetProperties())
                 property.SetColumnName(property.GetColumnName().ToSnakeCase());

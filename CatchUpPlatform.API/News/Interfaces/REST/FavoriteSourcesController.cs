@@ -123,7 +123,7 @@ public class FavoriteSourcesController(
     [HttpGet]
     public async Task<ActionResult> GetFavoriteSourceFromQuery(
         [FromQuery] string newsApiKey,
-        [FromQuery] string sourceId)
+        [FromQuery] string sourceId = "")
     {
         return string.IsNullOrEmpty(sourceId)
             ? await GetAllFavoriteSourcesByNewsApiKey(newsApiKey)

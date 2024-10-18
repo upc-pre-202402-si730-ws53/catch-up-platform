@@ -6,11 +6,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CatchUpPlatform.API.News.Infrastructure.Repositories;
 
-public class FavoriteSourceRepository : BaseRepository<FavoriteSource>, IFavoriteSourceRepository
+public class FavoriteSourceRepository(AppDbContext context) : BaseRepository<FavoriteSource>(context), IFavoriteSourceRepository
 {
-    protected FavoriteSourceRepository(AppDbContext context) : base(context)
-    {
-    }
 
     public async Task<IEnumerable<FavoriteSource>> FindByNewsApiKeyAsync(string newsApiKey)
     {
